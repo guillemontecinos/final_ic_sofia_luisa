@@ -1,0 +1,18 @@
+
+***In case I add anonymous checkbox
+
+function checkAnonymous () { // User preferes to stay anonymous checkbox
+ anonymousCheckbox = createCheckbox('I prefer to stay anonymous.', false);
+anonymousCheckbox.position(220, 300);
+anonymousCheckbox.changed(myCheckedEvent);
+  
+function myCheckedEvent() {
+if (this.checked()) {
+ background(255);
+text("Anonymous!", 20,20);
+ } else {
+background(255);
+ text("Not anonymous",20,20);
+ }
+  }
+}
