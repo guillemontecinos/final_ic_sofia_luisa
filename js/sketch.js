@@ -10,7 +10,7 @@
 //WEBCAM SHOULD WORK WITHOUT HAVING TAB OPEN.
 //EVERYTHING IN DRAW MUST BE INVISIBLE TO USER.
 //SKIP SAVE IMAGE DIALOG.
-//AFTER SAVING IMAGE IT SHOULD AUTOREFRESH EVERYTHING.
+//DONE -> AFTER SAVING IMAGE IT SHOULD AUTOREFRESH EVERYTHING.
 
 
 //snapshots global variables
@@ -45,7 +45,7 @@ let questionAgree; // //variable to ask if user agrees or not to participate.
 let time;
 let timeInterval;
 let timeBegin = 0;
-let timeFactor = 60*1000//minutes to millis factor
+let timeFactor = 60*1000; //minutes to millis factor
 let timeDivisions = 12;
 let currentCapture = 0;
 
@@ -294,6 +294,7 @@ function startRecording() {
 	startMessage  = createElement('h4', 'PRESS THIS BUTTON WHEN YOU ARE READY TO START! > ');
 	startMessage.position(490, selectTime.y+40);
 	//startButton.mousePressed(reset);
+	// reset();
 }
 
 function toggleRecording() {
@@ -304,7 +305,7 @@ function toggleRecording() {
 //make start button to activate the draw function.
 function draw() {
 
-  if (isRecording === true) {
+  if (isRecording == true) {
 
     grid() //calls function that draws the whole muybridge-like grid and info on it.
     enterInfo(); // esto no se pq no funciona si no esta en draw. name() si funciona.
@@ -380,7 +381,19 @@ function grid () {   //sets up grid for muybridge sketch
 }
 
 function reset(){
+	webcamOn = true;
+	shooting = true;
+	timeBegin = 0;
+	timeFactor = 60*1000;
+	timeDivisions = 12;
+	currentCapture = 0;
+	isRecording = false;
+	photoTaken = false;
+	recordingCompleted = false;
+	for (var i = snapshots.length; i > 0 ; i--) {
+		snapshots.pop();
+	}
 	setup();
-	draw();
+	// draw();
 
 }
